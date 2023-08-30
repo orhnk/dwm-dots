@@ -43,9 +43,13 @@ mem() {
 }
 
 wlan() {
-	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
-	up) printf "^c$black^ ^b$blue^ 󰤨 ^d^%s" " ^c$blue^Connected" ;;
-	down) printf "^c$black^ ^b$blue^ 󰤭 ^d^%s" " ^c$blue^Disconnected" ;;
+  # WIFI:
+  # cat /sys/class/net/wl*/operstate 2>/dev/null
+  # ETH:
+  # cat /sys/class/net/enp4s0/operstate 2>/dev/null
+	case "$(cat /sys/class/net/enp4s0/operstate 2>/dev/null)" in
+	up)   printf "^c$grey^ ^b$orange^ 󰤨 ^d^%s" "^b$grey^ ^c$orange^ Connected" ;;
+	down) printf "^c$grey^ ^b$orange^ 󰤭 ^d^%s" "^b$grey^ ^c$orange^ Disconnected" ;;
 	esac
 }
 
@@ -55,12 +59,12 @@ dateinfo() {
 }
 
 timeinfo() {
-	printf "^c$black^ ^b$green_dark^ 󱑆 "
-	printf "^c$black^^b$green^ $(date '+%R')"
+	printf "^c$grey^ ^b$green_dark^ 󱑆 "
+	printf "^c$grey^^b$green^ $(date '+%R')"
 }
 
 weather() {
-	weather=$(curl wttr.in/?format="%t\n")
+	weather=$(curl -s wttr.in/?format="%t\n")
 	moon=$(curl -s wttr.in/?format=%m)
 	printf "^c$black^ ^b$white^ $moon"
 	printf "^c$white^ ^b$grey^  $weather"
@@ -75,6 +79,10 @@ firefox() {
 }
 
 emacs() {
+	printf "^c$magenta^"
+}
+
+arch() {
 	printf "^c$blue^"
 }
 
@@ -82,10 +90,18 @@ recorder() {
 	printf "^c$red^ ^b$black^ ⏺️"
 }
 
+# uptime | awk -F'[ ,:]+' '{printf "UP: %02d:%02d\n", $6, $7}'
+
+uptime_info() {
+	printf "^c$black^ ^b$red^ "
+  uptime_result=$(uptime | awk -F'[ ,:]+' '{printf "%02d:%02d\n", $6, $7}')
+	printf "^c$white^ ^b$grey^  $uptime_result"
+}
+
 while true; do
 	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
 	# Add  $(battery),  $(brightness) below to see battery usage and brightness on the bar
-	sleep 1 && xsetroot -name "$updates    $(firefox) $(vim) $(emacs)    $(weather) $(cpu) $(mem) $(dateinfo) $(timeinfo) $(recorder)" # wlan not working for ethernet
+  sleep 1 && xsetroot -name "$updates    $(firefox) $(emacs) $(arch) $(vim)    $(weather) $(wlan) $(uptime_info) $(cpu) $(mem) $(dateinfo) $(timeinfo) $(recorder)"
 done
