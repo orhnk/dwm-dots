@@ -1,0 +1,22 @@
+#!/bin/dash
+
+# colors
+
+black=#282828
+black_dark=#1d2021
+blue=#83a598
+blue_dark=#458588
+aqua=#8ec07c
+aqua_dark=#689d6a
+green=#b8bb26
+green_dark=#98971a
+grey=#3c3836
+# grey_dark=#3c3836
+magenta=#d3869b
+magenta_dark=#b16286
+orange=#fe8019
+orange_dark=#d65d0e
+red=#fb4934
+red_dark=#cc241d
+white=#ebdbb2
+white_dark=#d5c4a1
