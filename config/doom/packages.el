@@ -28,8 +28,8 @@
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe
 ;; from Doom or MELPA/ELPA/Emacsmirror:
-                                        ;(package! builtin-package :recipe (:nonrecursive t))
-                                        ;(package! builtin-package-2 :recipe (:repo "myfork/package"))
+                                ;(package! builtin-package :recipe (:nonrecursive t))
+                                ;(package! builtin-package-2 :recipe (:repo "myfork/package"))
 
 ;; Specify a `:branch' to install a package from a particular branch or tag.
 ;; This is required for some packages whose default branch isn't 'master' (which
@@ -57,8 +57,8 @@
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
 ;; Setting up chatGPT
-(package! chatgpt
-  :recipe (:host github :repo "joshcho/ChatGPT.el" :files ("dist" "*.el")))
+;; (package! chatgpt
+;;   :recipe (:host github :repo "joshcho/ChatGPT.el" :files ("dist" "*.el")))
 
 ;; Org-mode packages:
 
@@ -84,4 +84,34 @@
 ;; Setting up music player
 ;; (package! mingus) ;; TODO
 
+;; Try packages without installing
+(package! try :recipe (:host github :repo "larstvei/try"))
 
+
+;; Browser
+;; (use-package eaf
+;;   :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+;;   :custom
+;;   ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+;;   (eaf-browser-continue-where-left-off t)
+;;   (eaf-browser-enable-adblocker t)
+;;   (browse-url-browser-function 'eaf-open-browser)
+;;   :config
+;;   (defalias 'browse-web #'eaf-open-browser)
+;;   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+;;   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+;;   (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+;;   (eaf-bind-key nil "M-q" eaf-browser-keybinding)) ;; unbind, see more in the Wiki
+;;
+;; (package! xwwp) ;; Requires xwidgets!
+
+(package! webkit
+  :recipe
+  (:host github
+   :repo "akirakyle/emacs-webkit"
+   :branch "main"
+   :files
+   (:defaults "*.js" "*.css" "*.so")
+   :pre-build ("make")
+   )
+  )

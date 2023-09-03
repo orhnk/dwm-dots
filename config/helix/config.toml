@@ -1,0 +1,18 @@
+theme = "gruvbox"
+
+[editor]
+line-number = "relative"
+
+
+[editor.lsp]
+display-inlay-hints = true
+
+
+[editor.indent-guides]
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[keys.insert]
+"C-c" = "normal_mode"      
+# j = { k = "normal_mode" }  # wierd

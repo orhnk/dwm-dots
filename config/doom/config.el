@@ -86,7 +86,7 @@
 
 ;;; Basic Setup
   ;; Auto-start Superstar with Org
-)
+  )
 
 (with-eval-after-load 'org-superstar
   (set-face-attribute 'org-superstar-item nil :height 1.2)
@@ -226,34 +226,35 @@
 
 ;; Setting up emms (Music player)
 ;; (setq emms-volume-change-function 'emms-volume-alsa-control)
-  (defvar emms-player-mpv-volume 100)
+(defvar emms-player-mpv-volume 100)
 
-  (defun emms-player-mpv-get-volume ()
-    "Sets `emms-player-mpv-volume' to the current volume value
+(defun emms-player-mpv-get-volume ()
+  "Sets `emms-player-mpv-volume' to the current volume value
 and sends a message of the current volume status."
-    (emms-player-mpv-cmd '(get_property volume)
-                         #'(lambda (vol err)
-                             (unless err
-                               (let ((vol (truncate vol)))
-                                 (setq emms-player-mpv-volume vol)
-                                 (message "Music volume: %s%%"
-                                           vol))))))
+  (emms-player-mpv-cmd '(get_property volume)
+                       #'(lambda (vol err)
+                           (unless err
+                             (let ((vol (truncate vol)))
+                               (setq emms-player-mpv-volume vol)
+                               (message "Music volume: %s%%"
+                                        vol))))))
 
-  (defun emms-player-mpv-raise-volume (&optional amount)
-    (interactive)
-    (let* ((amount (or amount 10))
-           (new-volume (+ emms-player-mpv-volume amount)))
-      (if (> new-volume 100)
-          (emms-player-mpv-cmd '(set_property volume 100))
-        (emms-player-mpv-cmd `(add volume ,amount))))
-    (emms-player-mpv-get-volume))
+(defun emms-player-mpv-raise-volume (&optional amount)
+  (interactive)
+  (let* ((amount (or amount 10))
+         (new-volume (+ emms-player-mpv-volume amount)))
+    (if (> new-volume 100)
+        (emms-player-mpv-cmd '(set_property volume 100))
+      (emms-player-mpv-cmd `(add volume ,amount))))
+  (emms-player-mpv-get-volume))
 
-  (defun emms-player-mpv-lower-volume (&optional amount)
-    (interactive)
-    (emms-player-mpv-cmd `(add volume ,(- (or amount '10))))
-    (emms-player-mpv-get-volume))
+(defun emms-player-mpv-lower-volume (&optional amount)
+  (interactive)
+  (emms-player-mpv-cmd `(add volume ,(- (or amount '10))))
+  (emms-player-mpv-get-volume))
 
 ;; Setting up the font && weight
+;; (setq doom-font (font-spec :family "Iosevka" :size 10.0 :weight 'Bold))
 (setq doom-font (font-spec :family "JetBrainsMono" :size 10.0 :weight 'Bold))
 
 ;; Bindings:
@@ -261,7 +262,7 @@ and sends a message of the current volume status."
 ;; for quickrun
 (map! "C-M-<" #'quickrun ;; Runs the current buffer.
       "C-<" (lambda () (interactive) (windmove-down) (evil-quit)) ;; quits from the buffer below (generally quickrun buffer)
-)
+      )
 
 ;; SPLASH SCREEN
 (setq fancy-splash-image "~/.config/doom/splash/multi-splash.png")
@@ -271,3 +272,11 @@ and sends a message of the current volume status."
 
 ;; SHUT-UP EMACS! When quiting
 (setq confirm-kill-emacs nil)
+
+;; Browser flickering issue:
+
+(use-package! webkit
+  :config
+  (modify-frame-parameters nil '((inhibit-double-buffering . t)))
+  :bind ("C-c w" . webkit)
+  )
