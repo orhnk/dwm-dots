@@ -1,0 +1,6 @@
+
+config/st/config.h
+config/st/st
+config/st/*.o
+config/st/*.rej
+config/st/*.orig
