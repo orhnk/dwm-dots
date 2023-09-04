@@ -1,0 +1,248 @@
+
+
+
+
+# ############ TOMORROW NIGHT ##########
+# # Color definitions
+# set my_bg           = "color236"
+# set my_fg           = "color252"
+# set my_red          = "color210"
+# set my_green        = "color114"
+# set my_blue         = "color68"
+# set my_aqua         = "color80"
+# set my_yellow       = "color221"
+# set my_orange       = "color209"
+# set my_purple       = "color176"
+# set my_comment      = "color246"
+# set my_selection    = "color239"
+# set my_current_line = "color237"
+#
+# # basic components
+# color hdrdefault $my_green $my_bg
+# color signature  $my_blue $my_bg
+# color attachment $my_yellow $my_bg
+# color prompt     $my_purple $my_bg
+# color message    $my_green $my_bg
+# color error      $my_red $my_bg
+# color indicator  $my_fg $my_selection
+# color status     $my_bg $my_orange
+# color tree       $my_blue $my_bg
+# color normal     $my_fg $my_bg
+# color markers    $my_red $my_bg
+# color search     $my_bg $my_yellow
+# color tilde      $my_purple $my_bg
+# color underline  $my_bg $my_yellow
+# color index      $my_green $my_bg ~F
+# color index      $my_blue $my_bg "~N|~O"
+#
+# ### Highlights inside the body of a message ###
+#
+# # URLs
+# color body $my_aqua $my_bg "(https?|s?ftp|news|telnet|finger|ssh)://[^ \"\t\r\n]*"
+# color body $my_aqua $my_bg "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+# mono body bold "(https?|s?ftp|news|telnet|finger|ssh)://[^ \"\t\r\n]*"
+# mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+#
+# # email addresses
+# color body $my_blue $my_bg "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+# #mono body bold "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+#
+# ### Header components ###
+#
+# color header $my_green  $my_bg "^from:"
+# color header $my_green  $my_bg "^to:"
+# color header $my_green  $my_bg "^cc:"
+# color header $my_green  $my_bg "^date:"
+# color header $my_yellow $my_bg "^newsgroups:"
+# color header $my_yellow $my_bg "^reply-to:"
+# color header $my_aqua   $my_bg "^subject:"
+# color header $my_red    $my_bg "^x-spam-rule:"
+# color header $my_green  $my_bg "^x-mailer:"
+# color header $my_yellow $my_bg "^message-id:"
+# color header $my_yellow $my_bg "^Organization:"
+# color header $my_yellow $my_bg "^Organisation:"
+# color header $my_yellow $my_bg "^User-Agent:"
+# color header $my_yellow $my_bg "^message-id: .*pine"
+# color header $my_yellow $my_bg "^X-Fnord:"
+# color header $my_yellow $my_bg "^X-WebTV-Stationery:"
+# color header $my_yellow $my_bg "^X-Message-Flag:"
+# color header $my_yellow $my_bg "^X-Spam-Status:"
+# color header $my_yellow $my_bg "^X-SpamProbe:"
+# color header $my_red    $my_bg "^X-SpamProbe: SPAM"
+#
+# ### Coloring quoted text - coloring the first 7 levels ###
+#
+# color quoted  $my_aqua   $my_bg
+# color quoted1 $my_yellow $my_bg
+# color quoted2 $my_red    $my_bg
+# color quoted3 $my_green  $my_bg
+# color quoted4 $my_aqua   $my_bg
+# color quoted5 $my_yellow $my_bg
+# color quoted6 $my_red    $my_bg
+# color quoted7 $my_green  $my_bg
+#
+# ### sidebar colors ###
+#
+# color sidebar_divider   $my_comment $my_bg
+# color sidebar_flagged   $my_aqua $my_bg
+# color sidebar_highlight $my_bg $my_yellow
+# color sidebar_new       $my_green $my_bg
+# color sidebar_spoolfile $my_blue $my_bg
+#
+# ##########################################
+
+
+# ############ REDDISH ##########
+# set my_purify_black = "color235"
+# set my_purify_white = "color15"
+# set my_purify_red = "color196"
+# set my_purify_green = "color84"
+# set my_purify_blue = "color75"
+# set my_purify_yellow = "color228"
+# set my_purify_pink = "color212"
+# set my_purify_salmon = "color209"
+# set my_purify_purple = "color141"
+# set my_purify_dark_yellow = "color173"
+# set my_purify_light_grey = "color61"
+# set my_purify_dark_grey = "color237"
+# set my_purify_bg = "color237"
+#
+# color hdrdefault $my_purify_blue $my_purify_bg
+# color quoted $my_purify_blue $my_purify_bg
+# color signature $my_purify_blue $my_purify_bg
+# color attachment $my_purify_red $my_purify_bg
+# color prompt brightmagenta $my_purify_bg
+# color message brightred $my_purify_bg
+# color error brightred $my_purify_bg
+# color indicator $my_purify_bg $my_purify_salmon
+# color status $my_purify_yellow $my_purify_blue
+# color tree white $my_purify_bg
+# color normal white $my_purify_bg
+# color markers $my_purify_red $my_purify_bg
+# color search white $my_purify_bg
+# color tilde brightmagenta $my_purify_bg
+# color index $my_purify_blue $my_purify_bg ~F
+# color index $my_purify_red $my_purify_bg "~N|~O"
+
+# gruvbox dark (contrast dark):
+########### REDDISH ##########
+# bg0    = 234
+# bg1    = 237
+# bg2    = 239
+# bg3    = 241
+# bg4    = 243
+# 
+# gray   = 245
+# 
+# fg0    = 229
+# fg1    = 223
+# fg2    = 250
+# fg3    = 248
+# fg4    = 246
+# 
+# red    = 167
+# green  = 142
+# yellow = 214
+# blue   = 109
+# purple = 175
+# aqua   = 108
+# orange = 208
+
+
+# See http://www.mutt.org/doc/manual/#color
+
+color attachment  color109 color234
+color bold        color229 color234
+color error       color167 color234
+color hdrdefault  color246 color234
+color indicator   color223 color237
+color markers     color243 color234
+color normal      color223 color234
+color quoted      color250 color234
+color quoted1     color108 color234
+color quoted2     color250 color234
+color quoted3     color108 color234
+color quoted4     color250 color234
+color quoted5     color108 color234
+color search      color234 color208
+color signature   color108 color234
+color status      color234 color250
+color tilde       color243 color234
+color tree        color142 color234
+color underline   color223 color239
+
+color sidebar_divider    color250 color234
+color sidebar_new        color142 color234
+
+color index color142 color234 ~N
+color index color108 color234 ~O
+color index color109 color234 ~P
+color index color214 color234 ~F
+color index color175 color234 ~Q
+color index color167 color234 ~=
+color index color234 color223 ~T
+color index color234 color167 ~D
+
+color header color214 color234 "^(To:|From:)"
+color header color142 color234 "^Subject:"
+color header color108 color234 "^X-Spam-Status:"
+color header color108 color234 "^Received:"
+
+# Regex magic for URLs and hostnames
+#
+# Attention: BSD's regex has RE_DUP_MAX set to 255.
+#
+# Examples:
+#   http://some-service.example.com
+#   example.com
+#   a.example.com
+#   some-service.example.com
+#   example.com/
+#   example.com/datenschutz
+#   file:///tmp/foo
+#
+# Non-examples:
+#   1.1.1900
+#   14.02.2022/24:00
+#   23.59
+#   w.l.o.g
+#   team.its
+color body color142 color234 "[a-z]{3,255}://[[:graph:]]*"
+color body color142 color234 "([-[:alnum:]]+\\.)+([0-9]{1,3}|[-[:alpha:]]+)/[[:graph:]]*"
+color body color142 color234 "([-[:alnum:]]+\\.){2,255}[-[:alpha:]]{2,10}"
+
+# IPv4 and IPv6 stolen from https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+color body color142 color234 "((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])"
+color body color142 color234 "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
+
+# Mail addresses and mailto URLs
+color body color208 color234 "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body color208 color234 "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+
+# some simleys and stuff
+color body color234 color214 "[;:]-*[)>(<lt;|]"
+color body color229 color234 "\\*[- A-Za-z]+\\*"
+
+color body color214 color234 "^-.*PGP.*-*"
+color body color142 color234 "^gpg: Good signature from"
+color body color167 color234 "^gpg: Can't.*$"
+color body color214 color234 "^gpg: WARNING:.*$"
+color body color167 color234 "^gpg: BAD signature from"
+color body color167 color234 "^gpg: Note: This key has expired!"
+color body color214 color234 "^gpg: There is no indication that the signature belongs to the owner."
+color body color214 color234 "^gpg: can't handle these multiple signatures"
+color body color214 color234 "^gpg: signature verification suppressed"
+color body color214 color234 "^gpg: invalid node with packet of type"
+
+color body color142 color234 "^Good signature from:"
+color body color167 color234 "^.?BAD.? signature from:"
+color body color142 color234 "^Verification successful"
+color body color167 color234 "^Verification [^s][^[:space:]]*$"
+
+color compose header            color223 color234
+color compose security_encrypt  color175 color234
+color compose security_sign     color109 color234
+color compose security_both     color142 color234
+color compose security_none     color208 color234
+
+

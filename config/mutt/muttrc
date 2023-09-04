@@ -1,0 +1,252 @@
+# vim: filetype=muttrc
+
+source ~/.config/mutt/settings
+source ~/.config/mutt/colors
+source ~/.config/mutt/mappings
+
+# Accounts
+
+source ~/.config/mutt/accounts/gmail
+folder-hook $folder 'source ~/.config/mutt/accounts/gmail'
+
+# # Performance Tuning
+# # use very high $read_inc to speed up reading hcache'd maildirs
+# folder-hook . 'set read_inc=1000'
+# # use lower value for reading slower remote IMAP folders
+# folder-hook imap 'set read_inc=100'
+# # use even lower value for reading even slower remote POP folders
+# folder-hook pop 'set read_inc=1'
+#
+
+# source ~/.config/mutt/accounts/school
+# folder-hook $folder 'source ~/.config/mutt/accounts/school'
+#
+# source ~/.config/mutt/accounts/main
+# folder-hook $folder 'source ~/.config/mutt/accounts/main'
+
+
+
+# # User
+# set from = "atomoyuncu.yt@gmail.com"
+# set realname = "Orhan KARAMAN"
+#
+# # Gmail
+# set imap_user           = "atomoyuncu.yt@gmail.com"
+# set smtp_url            = "smtps://atomoyuncu.yt@smtp.gmail.com:465/"
+# set smtp_authenticators = 'gssapi:login'
+# set imap_pass           = "yhutkstmswlmmfet"
+# set smtp_pass           = "yhutkstmswlmmfet"
+#
+# # Ensure TLS is enforced
+# set ssl_starttls = yes
+# set ssl_force_tls = yes
+#
+# # My mailboxes
+# set folder = "imaps://imap.gmail.com:993/[Gmail]"
+# # set spoolfile = "+All Mail"
+# # set postponed = "+Drafts"
+# set record = "+Sent Mail"
+# set trash = "+Trash"
+#
+# mailboxes =Important =Starred =Drafts ="Sent Mail" =Spam =Trash
+#
+# # Where to put the stuff
+# set header_cache = "$XDG_CACHE_HOME/mutt/headers"
+# set message_cachedir = "$XDG_CACHE_HOME/mutt/bodies"
+# set certificate_file = "$XDG_CACHE_HOME/mutt/certificates"
+# unset record
+#
+# # settings
+# set pager_index_lines = 10          
+# set pager_context = 3                # show 3 lines of context
+# set pager_stop                       # stop at end of message
+# set menu_scroll                      # scroll menu
+# set tilde                            # use ~ to pad mutt
+# set move=no                          # don't move messages when marking as read
+# set mail_check = 30                  # check for new mail every 30 seconds
+# set imap_keepalive = 900             # 15 minutes
+# set sleep_time = 0                   # don't sleep when idle
+# set wait_key = no		     # mutt won't ask "press key to continue"
+# set envelope_from                    # which from?
+# set edit_headers                     # show headers when composing
+# set fast_reply                       # skip to compose when replying
+# set askcc                            # ask for CC:
+# set fcc_attach                       # save attachments with the body
+# set forward_format = "Fwd: %s"       # format of subject when forwarding
+# set forward_decode                   # decode when forwarding
+# set forward_quote                    # include message in forwards
+# set mime_forward                     # forward attachments as part of body
+# set attribution = "On %d, %n wrote:" # format of quoting header
+# set reply_to                         # reply to Reply to: field
+# set reverse_name                     # reply as whomever it was to
+# set include                          # include message in replies
+# set text_flowed=yes                  # correct indentation for plain text
+# unset sig_dashes                     # no dashes before sig
+# unset markers
+#
+# # Sort by newest conversation first.
+# set charset = "utf-8"
+# set uncollapse_jump
+# set sort_re
+# set sort = reverse-threads
+# set sort_aux = last-date-received
+# # How we reply and quote emails.
+# set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+# set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+# set send_charset = "utf-8:iso-8859-1:us-ascii" # send in utf-8
+#
+#
+# #sidebar
+# set sidebar_visible # comment to disable sidebar by default
+# set sidebar_short_path
+# set sidebar_folder_indent
+# set sidebar_format = "%B %* [%?N?%N / ?%S]"
+# set mail_check_stats
+# bind index,pager \CJ sidebar-prev
+# bind index,pager \CK sidebar-next
+# bind index,pager \CE sidebar-open
+# bind index,pager B sidebar-toggle-visible
+#
+#
+# set signature = "$XDG_CONFIG_HOME/mutt/signature"
+#
+# set editor = "nvim"
+#
+# # TODO: Check These out:
+# # 
+# # """
+# # If you use nvim as your editor, you may 
+# # want to add the following to your 
+# # nvim/after/ftplugin/mail.{lua,vim} file:
+# # """
+# #
+# # vim.opt_local.spell = true
+# # vim.opt_local.spelllang = 'en_us'
+# # vim.opt_local.fo:append('aw')
+# # local map = vim.api.nvim_buf_set_keymap
+# # local options = { noremap = true, silent = true}
+# # map(0, 'n', '<leader>x', 'ZZ', options)
+#
+# # Vim Keybindings #
+#
+# # press A and mark it as read
+# macro index A \
+#     "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+#     "mark all new as read"
+#
+# bind index j next-entry
+# bind index k previous-entry
+# bind pager j next-line
+# bind pager k previous-line
+#
+# bind attach,index,pager \CD next-page
+# bind attach,index,pager \CU previous-page
+# bind pager g top
+# bind pager G bottom
+# bind attach,index g first-entry
+# bind attach,index G last-entry
+#
+# # vim: filetype=muttrc
+# # default index colors:
+# color index yellow default '.*'
+# color index_author red default '.*'
+# color index_number blue default
+# color index_subject cyan default '.*'
+#
+# # for new mail:
+# color index brightyellow black "~n"
+# color index_author brightred black "~n"
+# color index_subject brightcyan black "~n"
+#
+# # header colors:
+# color header blue default ".*"
+# color header brightmagenta default "^(from)"
+# color header brightcyan default "^(subject)"
+# color header brightwhite default "^(cc|bcc)"
+#
+# mono bold bold
+# mono underline underline
+# mono indicator reverse
+# mono error bold
+# color normal default default
+# color indicator brightblack white
+# color sidebar_highlight red default
+# color sidebar_divider brightblack black
+# color sidebar_flagged red black
+# color sidebar_new green black
+# color normal brightyellow default
+# color error red default
+# color tilde black default
+# color message cyan default
+# color markers red white
+# color attachment white default
+# color search brightmagenta default
+# color status brightyellow black
+# color hdrdefault brightgreen default
+# color quoted green default
+# color quoted1 blue default
+# color quoted2 cyan default
+# color quoted3 yellow default
+# color quoted4 red default
+# color quoted5 brightred default
+# color signature brightgreen default
+# color bold black default
+# color underline black default
+# color normal default default
+#
+# color body brightred default "[\-\.+_a-za-z0-9]+@[\-\.a-za-z0-9]+" # email addresses
+# color body brightblue default "(https?|ftp)://[\-\.,/%~_:?&=\#a-za-z0-9]+" # url
+# color body green default "\`[^\`]*\`" # green text between ` and `
+# color body brightblue default "^# \.*" # headings as bold blue
+# color body brightcyan default "^## \.*" # subheadings as bold cyan
+# color body brightgreen default "^### \.*" # subsubheadings as bold green
+# color body yellow default "^(\t| )*(-|\\*) \.*" # list items as yellow
+# color body brightcyan default "[;:][-o][)/(|]" # emoticons
+# color body brightcyan default "[;:][)(|]" # emoticons
+# color body brightcyan default "[ ][*][^*]*[*][ ]?" # more emoticon?
+# color body brightcyan default "[ ]?[*][^*]*[*][ ]" # more emoticon?
+# color body red default "(bad signature)"
+# color body cyan default "(good signature)"
+# color body brightblack default "^gpg: good signature .*"
+# color body brightyellow default "^gpg: "
+# color body brightyellow red "^gpg: bad signature from.*"
+# mono body bold "^gpg: good signature"
+# mono body bold "^gpg: bad signature from.*"
+# color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
+#
+# # urlscan # -> making url's clickable
+# # requires: pip install --user urlscan
+# macro index,pager \cb "<pipe-message> urlscan<enter>" "call urlscan to extract urls out of a message"
+# macro attach,compose \cb "<pipe-entry> urlscan<enter>" "call urlscan to extract urls out of a message"
+#
+#
+# # # Use GPGME
+# # # Use my key for signing and encrypting
+# # set pgp_default_key = 8EED6DC0B9FC142569B4ADCE509F06756ECCB204
+# #
+# # # Use GPGME
+# # set crypt_use_gpgme = yes
+# #
+# # # Automatically sign all out-going email
+# # set crypt_autosign = yes
+# #
+# # # Sign replies to signed emails
+# # set crypt_replysign = yes
+# #
+# # # Encrypt replies to encrypted emails
+# # set crypt_replyencrypt = yes
+# #
+# # # Encrypt and sign replies to encrypted and signed email
+# # set crypt_replysignencrypted = yes
+# #
+# # # Attempt to verify signatures automatically
+# # set crypt_verify_sig = yes
+# #
+# # # Attempt to encrypt automatically, if possible
+# # # I would recommend setting this to no as university often have spam filters
+# # # And this will cause your emails to be marked as spam
+# # # as they can't decrypt your emails LMAO
+# # set crypt_opportunistic_encrypt = no
+# #
+# # # So you can view encrypted emails automatically
+# # auto_view application/pgp-encrypted

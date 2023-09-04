@@ -1,0 +1,19 @@
+# MS Word documents
+application/msword; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+application/vnd.ms-excel; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+application/vnd.oasis.opendocument.text; ~/dotfiles/office/view-attachment.sh %s "-" '/Applications/LibreOffice.app'
+
+# HTML
+# text/html; lynx -I %{charset} -T text/html; copiousoutput;
+# text/plain; nvim %s
+
+text/html; firefox %s; test=test -n "$display"; needsterminal;
+text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump -width=1024 %s; nametemplate=%s.html; copiousoutput;
+
+#PDFs
+application/pdf; /usr/bin/zathura %s pdf
+
+#Images
+image/png; /usr/bin/feh %s
+image/jpeg; /usr/bin/feh %s
