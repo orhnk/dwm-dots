@@ -61,6 +61,8 @@ M.general = {
   v = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    ["<"] = { "<gv", "Indent line" },
+    [">"] = { ">gv", "Indent line" },
   },
 
   x = {
@@ -191,7 +193,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>f"] = {
+    ["<leader>lf"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,

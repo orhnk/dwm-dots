@@ -1,0 +1,56 @@
+{
+  "parser-directories": [
+    "/home/utf/github",
+    "/home/utf/src",
+    "/home/utf/source"
+  ],
+  "theme": {
+    "function": 26,
+    "operator": {
+      "bold": true,
+      "color": 239
+    },
+    "attribute": {
+      "color": 124,
+      "italic": true
+    },
+    "variable.builtin": {
+      "bold": true
+    },
+    "variable.parameter": {
+      "underline": true
+    },
+    "type": 23,
+    "function.builtin": {
+      "color": 26,
+      "bold": true
+    },
+    "property": 124,
+    "constructor": 136,
+    "type.builtin": {
+      "color": 23,
+      "bold": true
+    },
+    "module": 136,
+    "punctuation.delimiter": 239,
+    "tag": 18,
+    "punctuation.bracket": 239,
+    "embedded": null,
+    "constant": 94,
+    "string.special": 30,
+    "string": 28,
+    "constant.builtin": {
+      "color": 94,
+      "bold": true
+    },
+    "keyword": 56,
+    "number": {
+      "color": 94,
+      "bold": true
+    },
+    "comment": {
+      "color": 245,
+      "italic": true
+    }
+  }
+}

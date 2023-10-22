@@ -40,6 +40,7 @@ static const int new_window_attach_on_end = 0; /*  1 means the new window will a
 static const char *fonts[]          = {
   "Iosevka:style:medium:size=12",
   "JetBrainsMono Nerd Font Mono:style:medium:size=19",
+  "Cozette",
   "Material Design Icons:style:Regular",
 }; //:size=10
 

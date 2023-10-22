@@ -80,6 +80,7 @@
 
 ;; trying another solution for now NOTE
 (package! org-superstar)
+(package! org-pdftools)
 
 ;; Setting up music player
 ;; (package! mingus) ;; TODO
@@ -105,13 +106,13 @@
 ;;
 ;; (package! xwwp) ;; Requires xwidgets!
 
-(package! webkit
-  :recipe
-  (:host github
-   :repo "akirakyle/emacs-webkit"
-   :branch "main"
-   :files
-   (:defaults "*.js" "*.css" "*.so")
-   :pre-build ("make")
-   )
-  )
+;; (package! webkit
+;;   :recipe
+;;   (:host github
+;;    :repo "akirakyle/emacs-webkit"
+;;    :branch "main"
+;;    :files
+;;    (:defaults "*.js" "*.css" "*.so")
+;;    :pre-build ("make")
+;;    )
+;;   )

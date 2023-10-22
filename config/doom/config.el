@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "KoBruh"
+(setq user-full-name "utfeight"
       user-mail-address "benimadimarda123123@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-gruvbox) ;; doom-lantern
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -42,6 +42,14 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-hide-emphasis-markers t) ;; Hide emphasis markers like /this/ or *this*
+
+(setq org-src-fontify-natively t
+      org-src-tab-acts-natively t
+      org-confirm-babel-evaluate nil
+      org-edit-src-content-indentation 0) ;; Syntax highlighting in code blocks
+
+(setq org-src-fontify-natively t) ;; Syntax highlighting in code blocks
+
 ;; This comment
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
@@ -112,6 +120,43 @@
   )
 
 (setq org-cycle-separator-lines -1) ;; Found on the internet it debugs ellipsis error (That I don't get cuz I can'T see anyhing)
+
+(defun toggle-org-html-export-on-save ()
+  (interactive)
+  (if (memq 'org-html-export-to-html after-save-hook)
+      (progn
+        (remove-hook 'after-save-hook 'org-html-export-to-html t)
+        (message "Disabled org html export on save for current buffer..."))
+    (add-hook 'after-save-hook 'org-html-export-to-html nil t)
+    (message "Enabled org html export on save for current buffer...")))
+
+(defun toggle-org-markdown-export-on-save ()
+  (interactive)
+  (if (memq 'org-md-export-to-markdown after-save-hook)
+      (progn
+        (remove-hook 'after-save-hook 'org-md-export-to-markdown t)
+        (message "Disabled org markdown export on save for current buffer..."))
+    (add-hook 'after-save-hook 'org-md-export-to-markdown nil t)
+    (message "Enabled org markdown export on save for current buffer...")))
+
+(defun toggle-org-latex-export-on-save ()
+  (interactive)
+  (if (memq 'org-latex-export-to-latex after-save-hook)
+      (progn
+        (remove-hook 'after-save-hook 'org-pdftools-export t)
+        (message "Disabled org latex export on save for current buffer..."))
+    (add-hook 'after-save-hook 'org-pdftools-export nil t)
+    (message "Enabled org latex export on save for current buffer...")))
+
+(defun toggle-org-pdf-export-on-save ()
+  (interactive)
+  (if (memq 'org-latex-export-to-pdf after-save-hook)
+      (progn
+        (remove-hook 'after-save-hook 'org-pdftools-export t)
+        (message "Disabled org pdf export on save for current buffer..."))
+    (add-hook 'after-save-hook 'org-pdftools-export nil t)
+    (message "Enabled org pdf export on save for current buffer...")))
+
 ;; Possibly considerable characters:
 ;; ⤵ ⤴ ⤶ ⤷ ⤸ ⤹ ⤺ ⤻ ⤼ ⤽ ⤾ ⤿ ⥀ ⥁ ⥂ ⥃ ⥄ ⥅ ⥆ ⥇ ⥈ ⥉ ⥊ ⥋ ⥌ ⥍ ⥎ ⥏ ⥐ ⥑ ⥒ ⥓ ⥔ ⥕ ⥖ ⥗ ⥘ ⥙ ⥚ ⥛ ⥜ ⥝ ⥞ ⥟ ⥠ ⥡ ⥢ ⥣ ⥤ ⥥ ⥦ ⥧ ⥨ ⥩ ⥪ ⥫ ⥬ ⥭ ⥮ ⥯ ⥰ ⥱ ⥲ ⥳ ⥴ ⥵ ⥶ ⥷ ⥸ ⥹ ⥺ ⥻ ⥼ ⥽ ⥾ ⥿ ⦀ ⦁ ⦂ ⦃ ⦄ ⦅ ⦆ ⦇ ⦈ ⦉ ⦊ ⦋ ⦌ ⦍ ⦎ ⦏ ⦐ ⦑ ⦒ ⦓ ⦔ ⦕ ⦖ ⦗ ⦘ ⦙ ⦚ ⦛ ⦜ ⦝ ⦞ ⦟ ⦠ ⦡ ⦢ ⦣ ⦤ ⦥ ⦦ ⦧ ⦨ ⦩ ⦪ ⦫ ⦬ ⦭ ⦮ ⦯ ⦰ ⦱ ⦲ ⦳ ⦴ ⦵ ⦶ ⦷ ⦸ ⦹ ⦺ ⦻ ⦼ ⦽ ⦾ ⦿ ⧀ ⧁ ⧂ ⧃ ⧄ ⧅ ⧆ ⧇ ⧈ ⧉ ⧊ ⧋ ⧌ ⧍ ⧎ ⧏ ⧐ ⧑ ⧒ ⧓ ⧔ ⧕ ⧖ ⧗ ⧘ ⧙ ⧚
 ;; Thanks Copilot!
@@ -172,8 +217,9 @@
   :hook (prog-mode . copilot-mode)
   :bind (
          ;; accept one word completion: FIXME
-         ("C-TAB" . 'copilot-accept-completion-by-word)
-         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         ;; THESE ANNOYING BRUH!!!
+         ;; ("C-TAB" . 'copilot-accept-completion-by-word)
+         ;; ("C-<tab>" . 'copilot-accept-completion-by-word)
 
          ;; change the suggestion:
          ("C-<right>" . 'copilot-next-completion)
@@ -187,16 +233,16 @@
   (interactive)
   (term "/bin/zsh"))
 
-;; Setting up ChatGPT
-(use-package! chatgpt
-  :defer t
-  :config
-  (unless (boundp 'python-interpreter)
-    (defvaralias 'python-interpreter 'python-shell-interpreter))
-  (setq chatgpt-repo-path (expand-file-name "straight/repos/ChatGPT.el/" doom-local-dir))
-  (set-popup-rule! (regexp-quote "*ChatGPT*")
-    :side 'bottom :size .5 :ttl nil :quit t :modeline nil)
-  :bind ("C-c q" . chatgpt-query))
+;; ;; Setting up ChatGPT
+;; (use-package! chatgpt
+;;   :defer t
+;;   :config
+;;   (unless (boundp 'python-interpreter)
+;;     (defvaralias 'python-interpreter 'python-shell-interpreter))
+;;   (setq chatgpt-repo-path (expand-file-name "straight/repos/ChatGPT.el/" doom-local-dir))
+;;   (set-popup-rule! (regexp-quote "*ChatGPT*")
+;;     :side 'bottom :size .5 :ttl nil :quit t :modeline nil)
+;;   :bind ("C-c q" . chatgpt-query))
 
 
 ;; Setting up Music player
@@ -224,38 +270,38 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-;; Setting up emms (Music player)
-;; (setq emms-volume-change-function 'emms-volume-alsa-control)
-(defvar emms-player-mpv-volume 100)
+;; ;; Setting up emms (Music player)
+;; ;; (setq emms-volume-change-function 'emms-volume-alsa-control)
+;; (defvar emms-player-mpv-volume 100)
 
-(defun emms-player-mpv-get-volume ()
-  "Sets `emms-player-mpv-volume' to the current volume value
-and sends a message of the current volume status."
-  (emms-player-mpv-cmd '(get_property volume)
-                       #'(lambda (vol err)
-                           (unless err
-                             (let ((vol (truncate vol)))
-                               (setq emms-player-mpv-volume vol)
-                               (message "Music volume: %s%%"
-                                        vol))))))
+;; (defun emms-player-mpv-get-volume ()
+;;   "Sets `emms-player-mpv-volume' to the current volume value
+;; and sends a message of the current volume status."
+;;   (emms-player-mpv-cmd '(get_property volume)
+;;                        #'(lambda (vol err)
+;;                            (unless err
+;;                              (let ((vol (truncate vol)))
+;;                                (setq emms-player-mpv-volume vol)
+;;                                (message "Music volume: %s%%"
+;;                                         vol))))))
 
-(defun emms-player-mpv-raise-volume (&optional amount)
-  (interactive)
-  (let* ((amount (or amount 10))
-         (new-volume (+ emms-player-mpv-volume amount)))
-    (if (> new-volume 100)
-        (emms-player-mpv-cmd '(set_property volume 100))
-      (emms-player-mpv-cmd `(add volume ,amount))))
-  (emms-player-mpv-get-volume))
+;; (defun emms-player-mpv-raise-volume (&optional amount)
+;;   (interactive)
+;;   (let* ((amount (or amount 10))
+;;          (new-volume (+ emms-player-mpv-volume amount)))
+;;     (if (> new-volume 100)
+;;         (emms-player-mpv-cmd '(set_property volume 100))
+;;       (emms-player-mpv-cmd `(add volume ,amount))))
+;;   (emms-player-mpv-get-volume))
 
-(defun emms-player-mpv-lower-volume (&optional amount)
-  (interactive)
-  (emms-player-mpv-cmd `(add volume ,(- (or amount '10))))
-  (emms-player-mpv-get-volume))
+;; (defun emms-player-mpv-lower-volume (&optional amount)
+;;   (interactive)
+;;   (emms-player-mpv-cmd `(add volume ,(- (or amount '10))))
+;;   (emms-player-mpv-get-volume))
 
 ;; Setting up the font && weight
 ;; (setq doom-font (font-spec :family "Iosevka" :size 10.0 :weight 'Bold))
-(setq doom-font (font-spec :family "JetBrainsMono" :size 10.0 :weight 'Bold))
+(setq doom-font (font-spec :family "JetBrainsMono" :size 10.0 :weight 'Medium))
 
 ;; Bindings:
 
@@ -273,10 +319,22 @@ and sends a message of the current volume status."
 ;; SHUT-UP EMACS! When quiting
 (setq confirm-kill-emacs nil)
 
-;; Browser flickering issue:
+;; ;; Browser flickering issue:
+;; (use-package! webkit
+;;   :config
+;;   (modify-frame-parameters nil '((inhibit-double-buffering . t)))
+;;   :bind ("C-c w" . webkit)
+;;   )
 
-(use-package! webkit
-  :config
-  (modify-frame-parameters nil '((inhibit-double-buffering . t)))
-  :bind ("C-c w" . webkit)
-  )
+;; ARROW KEYS
+;; (map!
+;;  :n "C-<right>" #'forward-word
+;;  :n "C-<left>"  #'backward-word
+;;  :i "C-<right>" #'+default/insert-space-after-cursor
+;;  :i "C-<left>"  #'+default/delete-backward-word
+;; )
+(map!
+ :map (insert visual command normal)
+ "C-<right>" #'forward-word
+ "C-<left>"  #'backward-word
+ )

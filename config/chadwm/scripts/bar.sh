@@ -1,5 +1,8 @@
 #!/bin/dash
 
+ # FUTURE #
+ # - MAILBOX
+
 # ^c$var^ = fg color
 # ^b$var^ = bg color
 
@@ -22,7 +25,7 @@ pkg_updates() {
 	if [ -z "$updates" ]; then
 		printf "  ^c$green_dark^    Fully Updated"
 	else
-		printf "  ^c$green_dark^    $updates"" updates"
+    printf "  ^c$green_dark^    $updates"" updates"
 	fi
 }
 
@@ -60,14 +63,18 @@ dateinfo() {
 
 timeinfo() {
 	printf "^c$grey^ ^b$green_dark^ 󱑆 "
-	printf "^c$grey^^b$green^ $(date '+%R')"
+	printf "^c$grey^^b$green^  $(date '+%R')"
 }
 
 weather() {
-	weather=$(curl -s wttr.in/?format="%t\n")
-	moon=$(curl -s wttr.in/?format=%m)
-	printf "^c$black^ ^b$white^ $moon"
-	printf "^c$white^ ^b$grey^  $weather"
+	# weather=$(curl -s wttr.in/?format="%t\n")
+	# moon=$(curl -s wttr.in/?format=%m)
+	# printf "^c$black^ ^b$white^ $moon"
+	# printf "^c$white^ ^b$grey^  $weather"
+  disk_space=$(df -h | rg '/dev/sdb3' | awk '{print $4}')
+	disk_icon=''
+	printf "^c$black^ ^b$white^ $disk_icon"
+	printf "^c$white^ ^b$grey^  $disk_space"
 }
 
 vim() {
@@ -87,7 +94,7 @@ arch() {
 }
 
 recorder() {
-	printf "^c$red^ ^b$black^ ⏺️"
+	printf "^c$red^ ^b$black^ "
 }
 
 # uptime | awk -F'[ ,:]+' '{printf "UP: %02d:%02d\n", $6, $7}'

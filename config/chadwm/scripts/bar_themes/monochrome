@@ -1,0 +1,20 @@
+#!/bin/dash
+
+black=#000000
+black_dark=#000000
+blue=#ffffff
+blue_dark=#ffffff
+aqua=#ffffff
+aqua_dark=#ffffff
+green=#ffffff
+green_dark=#ffffff
+grey=#333333
+# grey_dark=#3c3836
+magenta=#ffffff
+magenta_dark=#ffffff
+orange=#ffffff
+orange_dark=#ffffff
+red=#ffffff
+red_dark=#ffffff
+white=#ffffff
+white_dark=#ffffff
